@@ -209,6 +209,14 @@ document.addEventListener("drop", e => {
         return false;
     }
 
+    if (searchFriends.value !== "") {
+        filterFriends();
+    }
+
+    if (searchVk.value !== "") {
+        filterVk();
+    }
+
     currentDrag.startZone.remove();
 });
 
