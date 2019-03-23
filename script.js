@@ -117,7 +117,7 @@ if (saveObjFriendsVk && saveObjFriends) {
 } else {
     auth()
         .then(() => {
-            return callAPI('friends.get', {fields: 'first_name, last_name, photo_100', count : 4 });
+            return callAPI('friends.get', {fields: 'first_name, last_name, photo_100' });
         })
         .then(me => {
             objFriendsVk = me.items;
@@ -168,11 +168,14 @@ document.addEventListener("drag", e => {
 document.addEventListener("dragstart", e => {
     let target = e.target;
     let zone = target.closest('.windowItems__item');
+    let section = target.closest('.windowItems');
 
     if (zone) {
-        currentDrag = { startZone: zone, node: zone };
+        currentDrag = { section : section, startZone: zone, node: zone };
         e.dataTransfer.setData('text/html', 'dragstart');
     }
+
+    console.log(3);
 
 }, false);
 
@@ -198,32 +201,33 @@ document.addEventListener("drop", e => {
 
     let target = e.target;
     let objData = {};
+    let section = currentDrag.startZone.closest('.windowItems');
 
-    currentDrag.startZone.remove();
-
-    if (target.closest('#js-dropBlock')) {
+    if (target.closest('.windowItems').id === 'js-dropBlock' && section.id === 'js-vk-friends') {
         objData = {
-            first_name : currentDrag.node.dataset.first_name,
-            last_name : currentDrag.node.dataset.last_name,
+            first_name: currentDrag.node.dataset.first_name,
+            last_name: currentDrag.node.dataset.last_name,
             photo_100: currentDrag.node.dataset.photo_100
         };
         objFriends.push(objData);
         createItemVk(objFriends);
 
         removeItemVk(currentDrag.node.dataset.first_name, currentDrag.node.dataset.last_name);
-    }
-
-    if (target.closest('#js-vk-friends')) {
+    } else if (target.closest('.windowItems').id === 'js-vk-friends' && section.id === 'js-dropBlock') {
         objData = {
             first_name : currentDrag.node.dataset.first_name,
             last_name : currentDrag.node.dataset.last_name,
             photo_100: currentDrag.node.dataset.photo_100
         };
-        objFriendsVk.push(objData); 
+        objFriendsVk.push(objData);
         createItemFriends(objFriendsVk);
 
         removeItemFriends(currentDrag.node.dataset.first_name, currentDrag.node.dataset.last_name);
+    } else {
+        return false;
     }
+
+    currentDrag.startZone.remove();
 
 }, false);
 
