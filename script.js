@@ -103,7 +103,6 @@ function callAPI(method, params) {
     });
 }
 
-
 if (saveObjFriendsVk && saveObjFriends) {
     saveObjFriendsVk = JSON.parse(saveObjFriendsVk);
     saveObjFriends = JSON.parse(saveObjFriends);
