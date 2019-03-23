@@ -9,9 +9,7 @@ let dropBlock = document.querySelector('#js-dropBlock');
 let searchVk = document.querySelector('#js-searchVk');
 let searchFriends = document.querySelector('#js-searchFriends');
 let currentDrag;
-
 let objFriends = [];
-
 let saveObjFriendsVk = localStorage.getItem('objFriendsVk');
 let saveObjFriends = localStorage.getItem('objFriends');
 
@@ -119,8 +117,8 @@ if (saveObjFriendsVk && saveObjFriends) {
         .then(() => {
             return callAPI('friends.get', {fields: 'first_name, last_name, photo_100' });
         })
-        .then(me => {
-            objFriendsVk = me.items;
+        .then(items => {
+            objFriendsVk = items.items;
             addFriends({ items: objFriendsVk});
         });
 }
@@ -161,10 +159,6 @@ document.addEventListener('click', e => {
     }
 });
 
-document.addEventListener("drag", e => {
-
-}, false);
-
 document.addEventListener("dragstart", e => {
     let target = e.target;
     let zone = target.closest('.windowItems__item');
@@ -174,25 +168,11 @@ document.addEventListener("dragstart", e => {
         currentDrag = { section : section, startZone: zone, node: zone };
         e.dataTransfer.setData('text/html', 'dragstart');
     }
-
-}, false);
-
-document.addEventListener("dragend", e => {
-    //console.log("dragend", e);
-}, false);
+});
 
 document.addEventListener("dragover", e => {
     e.preventDefault();
-    //console.log("dragover", e);
-}, false);
-
-document.addEventListener("dragenter", e => {
-    //console.log("dragenter", e);
-}, false);
-
-document.addEventListener("dragleave", e => {
-    //console.log("dragleave", e);
-}, false);
+});
 
 document.addEventListener("drop", e => {
     e.preventDefault();
@@ -230,8 +210,7 @@ document.addEventListener("drop", e => {
     }
 
     currentDrag.startZone.remove();
-
-}, false);
+});
 
 let removeItemFriends = (first_name, last_name) => {
     for (let i = 0; i < objFriends.length; i++) {
