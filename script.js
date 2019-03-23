@@ -175,8 +175,6 @@ document.addEventListener("dragstart", e => {
         e.dataTransfer.setData('text/html', 'dragstart');
     }
 
-    console.log(3);
-
 }, false);
 
 document.addEventListener("dragend", e => {
@@ -202,6 +200,10 @@ document.addEventListener("drop", e => {
     let target = e.target;
     let objData = {};
     let section = currentDrag.startZone.closest('.windowItems');
+
+    if (!target.closest('.windowItems')) {
+        return false;
+    }
 
     if (target.closest('.windowItems').id === 'js-dropBlock' && section.id === 'js-vk-friends') {
         objData = {
