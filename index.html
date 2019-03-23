@@ -5,9 +5,197 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+
+<div class="window">
+    <div class="windowTitle">
+        Выберите друзей
+        <a href="#" class="windowTitle__close">
+            <img src="images/close.png" height="14" width="14"/>
+        </a>
+    </div>
+    <div class="windowWrap">
+        <div class="window__col">
+            <div class="windowSearch">
+                <div class="windowSearchWrap">
+                    <input type="text" id="js-searchVk" class="window__text window__text-icon" placeholder="Начните вводить имя друга">
+                </div>
+            </div>
+            <div class="window__title">Ваши друзья</div>
+            <ul id="js-vk-friends" class="windowItems"></ul>
+        </div>
+        <div class="window__col">
+            <div class="windowSearch">
+                <div class="windowSearchWrap">
+                    <input type="text"  id="js-searchFriends" class="window__text" placeholder="Название">
+                </div>
+            </div>
+            <div class="window__title">Друзья в списке</div>
+            <ul class="windowItems" id="js-dropBlock" draggable="false">
+                <!--<li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>
+                <li class="windowItems__item">
+                    <div class="windowItems__col">
+                        <div class="windowItems__img">
+                            <img src="images/user.png" height="45" width="45"/>
+                        </div>
+                    </div>
+                    <div class="windowItems__col">
+                        <div class="windowItems__fio">Artem Barabanov</div>
+                    </div>
+                    <div class="windowItems__col">
+                        <img src="images/close_grey.png" height="16" width="16"/>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="windowControl">
+        <button class="window__btn" id="js-save">Сохранить</button>
+    </div>
+</div>
+
+<div id="test"></div>
+
+<script id="vk-friends" type="text/x-handlebars-template">
+    {{#each items}}
+    <li class="windowItems__item" draggable="true"
+        data-photo_100="{{photo_100}}" data-first_name="{{first_name}}" data-last_name="{{last_name}}">
+        <div class="windowItems__col">
+            <div class="windowItems__img">
+                <img src="{{photo_100}}" height="45" width="45"/>
+            </div>
+        </div>
+        <div class="windowItems__col">
+            <div class="windowItems__fio">{{first_name}} {{last_name}}</div>
+        </div>
+        <div class="windowItems__col">
+            <img class="windowItems__add" src="images/plus.png" height="16" width="16"/>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+<script src="http://vk.com/js/api/openapi.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

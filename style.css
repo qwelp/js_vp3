@@ -1,0 +1,146 @@
+body {
+    background-color: rgba(0, 0, 0, .4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input:focus, input:active {
+    outline: none;
+}
+
+.window {
+    position: fixed;
+    width: 690px;
+    height: 490px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.windowSearchWrap {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.windowTitle {
+    position: relative;
+    background-color: #ff8663;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px;
+}
+
+.window__title {
+    color: #4f4f4f;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.windowTitle__close {
+    position: absolute;
+    right: 15px;
+    top: 17px;
+}
+
+.windowWrap {
+    display: flex;
+}
+
+.window__col {
+    flex: 1;
+}
+
+.windowItems {
+    height: 296px;
+    overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.window__text {
+    border: 0;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.windowItems__img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+}
+
+.windowItems__img img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.window__text-icon {
+    background: #ffffff url("images/seacrh.png") 10px 10px no-repeat;
+    padding-left: 30px;
+}
+
+.windowItems__item {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+    padding: 10px;
+}
+
+.windowItems__item .item {
+    height: 50px;
+    border: 1px solid #c00;
+}
+
+.windowItems__col {
+    display: flex;
+    align-items: center;
+}
+
+.windowItems__fio {
+    color: #4f4f4f;
+    font-weight: bold;
+}
+
+.windowItems__col:nth-child(2) {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.windowControl {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 50px;
+}
+
+.window__btn {
+    margin-right: 20px;
+    background-color: #f48365;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: 0;
+}
+
+#div2 {
+    border: 1px solid #c00;
+    height: 200px;
+}
