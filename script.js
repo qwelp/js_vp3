@@ -23,6 +23,7 @@ let createItemVk = (data) => {
 
     for (let i = 0; i < data.length; i++) {
         html += `<li class="windowItems__item" 
+                    draggable="true"
                     data-photo_100="${data[i].photo_100}" 
                     data-first_name="${data[i].first_name}"  
                     data-last_name="${data[i].last_name}" ">
@@ -116,13 +117,10 @@ if (saveObjFriendsVk && saveObjFriends) {
 } else {
     auth()
         .then(() => {
-            return callAPI('friends.get', {fields: 'first_name, last_name, photo_100'});
+            return callAPI('friends.get', {fields: 'first_name, last_name, photo_100', count : 4 });
         })
         .then(me => {
             objFriendsVk = me.items;
-
-
-
             addFriends({ items: objFriendsVk});
         });
 }
@@ -172,7 +170,7 @@ document.addEventListener("dragstart", e => {
     let zone = target.closest('.windowItems__item');
 
     if (zone) {
-        currentDrag = { startZone: zone, node: target };
+        currentDrag = { startZone: zone, node: zone };
         e.dataTransfer.setData('text/html', 'dragstart');
     }
 
@@ -214,6 +212,19 @@ document.addEventListener("drop", e => {
 
         removeItemVk(currentDrag.node.dataset.first_name, currentDrag.node.dataset.last_name);
     }
+
+    if (target.closest('#js-vk-friends')) {
+        objData = {
+            first_name : currentDrag.node.dataset.first_name,
+            last_name : currentDrag.node.dataset.last_name,
+            photo_100: currentDrag.node.dataset.photo_100
+        };
+        objFriendsVk.push(objData); 
+        createItemFriends(objFriendsVk);
+
+        removeItemFriends(currentDrag.node.dataset.first_name, currentDrag.node.dataset.last_name);
+    }
+
 }, false);
 
 let removeItemFriends = (first_name, last_name) => {
@@ -240,6 +251,7 @@ let createItemFriends = (data) => {
 
     for (let i = 0; i < data.length; i++) {
         html += `<li class="windowItems__item" 
+                    draggable="true" 
                     data-photo_100="${data[i].photo_100}" 
                     data-first_name="${data[i].first_name}"  
                     data-last_name="${data[i].last_name}" ">
